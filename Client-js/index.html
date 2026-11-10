@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza Delivery - Test</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .loading { background-color: #fff3cd; color: #856404; }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #pizzaList {
+            margin-top: 20px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .pizza-item {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f8f9fa;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+<!-- Header con navegación -->
+<div style="background: #007bff; color: white; padding: 10px 20px; display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; gap: 20px; align-items: center;">
+        <h2 style="margin: 0;">🍕 Pizza Delivery</h2>
+        <nav style="display: flex; gap: 15px;">
+            <a href="index.html" style="color: white; text-decoration: none; padding: 8px 12px; border-radius: 4px; background: rgba(255,255,255,0.3);">
+                🍕 Pizzas
+            </a>
+            <a href="ingredients.html" style="color: white; text-decoration: none; padding: 8px 12px; border-radius: 4px; background: rgba(255,255,255,0.1);">
+                🧀 Ingredientes
+            </a>
+            <a href="orders.html" style="color: white; text-decoration: none; padding: 8px 12px; border-radius: 4px; background: rgba(255,255,255,0.1);">
+                📦 Órdenes
+            </a>
+        </nav>
+    </div>
+    <div style="display: flex; gap: 15px; align-items: center;">
+        <span style="text-align: center;"><strong>👤 Admin:</strong> <span id="userEmail"></span></span>
+        <button onclick="logout()" style="background: #dc3545; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">
+            🚪 Cerrar Sesión
+        </button>
+    </div>
+</div>
+
+    <h1>🍕 Pizza Delivery - Admin Panel</h1>
+    
+    <!-- Estado de conexión -->
+    <div id="connectionStatus"></div>
+    
+    <!-- Botones de prueba -->
+    <div>
+    <!--<button onclick="testConnection()">🔍 Probar Conexión</button>-->    
+        <button onclick="loadPizzas()">📋 Cargar Pizzas</button>
+        <button onclick="showCreatePizzaForm()">➕ Crear Nueva Pizza</button>
+    </div>
+    
+    <!-- Resultados -->
+    <div id="pizzaList"></div>
+
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+    
+
+    <script>// Proteger la página - solo admins
+        if (!requireAdmin()) {
+            // Si no es admin, requireAdmin() ya redirige
+        } else {
+            // Mostrar email del usuario
+            document.getElementById('userEmail').textContent = localStorage.getItem('userEmail');
+        }
+    </script>
+</body>
+</html>
