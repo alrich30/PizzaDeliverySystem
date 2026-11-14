@@ -29,6 +29,18 @@ public class PizzaDbContext : DbContext, IUnitOfWork
     {
         base.OnModelCreating(modelBuilder);
 
+        modelBuilder.Entity<IngredientModel>()
+            .Property(i => i.ExtraPrice)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<PizzaModel>()
+            .Property(p => p.BasePrice)
+            .HasPrecision(18, 2);
+
+        modelBuilder.Entity<OrderItemModel>()
+            .Property(i => i.UnitPrice)
+            .HasPrecision(18, 2);
+
         // Ejemplo: relación muchos-a-muchos Pizza–Ingredient
         modelBuilder.Entity<PizzaModel>()
             .HasMany(p => p.Ingredients)

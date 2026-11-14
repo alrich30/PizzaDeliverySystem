@@ -26,7 +26,7 @@ public class Ingredient : BaseEntity, IAggregateRoot
     {
         Id = id;
         Name = name;
-        ExtraPrice = extraPrice;
+        ExtraPrice = decimal.Round(extraPrice, 2);
     }
 
     public void SetName(string name)

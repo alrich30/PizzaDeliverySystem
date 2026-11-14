@@ -72,7 +72,8 @@ namespace PizzaDeliverySystem.Infrastructure.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<decimal>("ExtraPrice")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -103,7 +104,8 @@ namespace PizzaDeliverySystem.Infrastructure.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("UnitPrice")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -151,7 +153,8 @@ namespace PizzaDeliverySystem.Infrastructure.Migrations
                         .HasColumnType("char(36)");
 
                     b.Property<decimal>("BasePrice")
-                        .HasColumnType("decimal(65,30)");
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("Name")
                         .IsRequired()
